@@ -1,10 +1,28 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
+# Views are always expected to return HttpResponse or an exception
+posts = [
+         {
+          'author':'Amey Bhilegaonkar',
+          'title':'Amey\'s First Blog',
+          'content':'Follow me on instagram @ameygoes',
+          'date_posted':'Aug-2020'
+         },
+         {
+          'author':'Aditya Bhilegaonkar',
+          'title':'Aditya\'s First Blog',
+          'content':'Follow me on instagram @ameygoes',
+          'date_posted':'Sep-2020'
+         }
+]
+
 
 def home(request):
-    return HttpResponse('<h1>Home Page of Blog App</h1>')
+    context = {
+               'posts':posts
+    }
+    return render(request, 'python_E2E_Django_App/home.html',context)
 
 def about(request):
-    return HttpResponse('<h1>Home Page of Blog About</h1>')
+    return render(request, 'python_E2E_Django_App/about.html',{'title':'AmeyGoes'})
